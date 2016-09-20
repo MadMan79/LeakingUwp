@@ -3,11 +3,11 @@ using System.Windows.Input;
 
 namespace LeakingUwpApp.ViewModels
 {
-    public sealed class SecondaryPageViewModel
+    public sealed class HeavyViewModel
     {
         private readonly byte[] m_heavyPayload = new byte[1024 * 1024 * 10];
 
-        public SecondaryPageViewModel()
+        public HeavyViewModel()
         {
             LeakingCommand = new DelegateCommand(Leak);
         }

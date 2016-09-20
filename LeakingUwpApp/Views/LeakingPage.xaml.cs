@@ -4,15 +4,15 @@ using LeakingUwpApp.ViewModels;
 
 namespace LeakingUwpApp.Views
 {
-    public sealed partial class SecondaryPage
+    public sealed partial class LeakingPage
     {
-        public SecondaryPageViewModel ViewModel => (SecondaryPageViewModel)DataContext;
+        public HeavyViewModel ViewModel => (HeavyViewModel)DataContext;
 
-        public SecondaryPage()
+        public LeakingPage()
         {
-            InitializeComponent();
+            DataContext = new HeavyViewModel(); // heavy VM in DataContext
 
-            DataContext = new SecondaryPageViewModel(); // heavy VM in DataContext
+            InitializeComponent();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

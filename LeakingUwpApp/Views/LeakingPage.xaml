@@ -1,0 +1,22 @@
+﻿<Page
+    x:Class="LeakingUwpApp.Views.LeakingPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="using:LeakingUwpApp.ViewModels"
+    NavigationCacheMode="Disabled"
+    d:DataContext="{d:DesignInstance Type=viewModels:HeavyViewModel, IsDesignTimeCreatable=True}"
+    mc:Ignorable="d">
+    
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <TextBlock Text="Content here does not matter, but AppBarButton on this page is causing the leak. Just click Back button above and check out memory usage. Surprisingly enough if project 'Target version' is changed from 14393 to 10586 there will be no leak." VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="WrapWholeWords"/>
+    </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Command="{x:Bind ViewModel.LeakingCommand}" Label="Leak" Icon="People"/> <!-- Leak is here! Comment this binding or change project target version from 14393 to 10568 and leak disappears! -->
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>
+

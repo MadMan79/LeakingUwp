@@ -23,7 +23,7 @@ namespace LeakingUwpApp.Views
 
         private void GoToLeakingPageButton_OnClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(SecondaryPage));
+            Frame.Navigate(typeof(LeakingPage));
         }
 
         private void ForceGarbageCollectionButton_OnClick(object sender, RoutedEventArgs e)
